@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Converter="clr-namespace:EJERCICIO_2_2.Converters"
+             x:Class="EJERCICIO_2_2.View.PageListSignature">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Converter:Base64ToImageSource x:Key="Base64ToImage" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    
+    <ContentPage.Content>
+        <StackLayout Padding="15">
+            <CollectionView x:Name="ListSignatures">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="10"
+                                       Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="#DEDEDE"
+                           CornerRadius="15">
+                            <StackLayout Orientation="Horizontal">
+                                <Image WidthRequest="50" 
+                                       Source="{Binding image, Converter={StaticResource Base64ToImage}}"
+                                       Margin="0,0,10,0"/>
+                                <StackLayout>
+                                    <Label VerticalOptions="Center" Text="{Binding name}"/>
+                                    <Label VerticalOptions="Center" Text="{Binding description}"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+           
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

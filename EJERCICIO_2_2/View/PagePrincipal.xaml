@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EJERCICIO_2_2.View.PagePrincipal">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center">
+
+            <Button Text="Agregar Firma"
+                    x:Name="BtnCreateSignature" 
+                    HorizontalOptions="Center"
+                    WidthRequest="150"
+                    Clicked="BtnCreateSignature_Clicked"/>
+            <Button Text="Listar Firmas"
+                    x:Name="BtnListSignature" 
+                    HorizontalOptions="Center"
+                    WidthRequest="150"
+                    Clicked="BtnListSignature_Clicked"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

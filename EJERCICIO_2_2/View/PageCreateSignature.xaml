@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:SignaturePad.Forms;assembly=SignaturePad.Forms"
+             x:Class="EJERCICIO_2_2.View.PageCreateSignature">
+    
+    <StackLayout Padding="20">
+        
+        <forms:SignaturePadView 
+            x:Name="Sign"
+            StrokeWidth="3"
+            WidthRequest="280"
+            HeightRequest="260"
+            VerticalOptions="Center"
+            HorizontalOptions="CenterAndExpand"/>
+
+        <Label Text="Nombre" Margin="0,10,0,0"/>
+        <Entry Placeholder="Ingrese su nombre"
+               x:Name="txtName"
+               Keyboard="Text"/>
+
+        <Label Text="Descripcion" Margin="0,10,0,0"/>
+        <Editor Keyboard="Plain" 
+                AutoSize="TextChanges" 
+                MaxLength="180" 
+                x:Name="txtDescripcion"
+                Placeholder="Ingrese su descripcion"/>
+
+        <Button Text="Guardar"
+                CornerRadius="10"
+                x:Name="BtnSaveSignature"
+                VerticalOptions="EndAndExpand"
+                Clicked="BtnSaveSignature_Clicked"/>
+
+    </StackLayout>
+</ContentPage>
