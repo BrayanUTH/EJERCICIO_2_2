@@ -1,12 +1,7 @@
 ﻿using EJERCICIO_2_2.Model;
 
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -53,7 +48,7 @@ namespace EJERCICIO_2_2.View
             {
                 cleanElement();
                 SaveSignatureToDevice(img);
-                await DisplayAlert("Aviso", "Firma Guardado Correctamente", "OK");
+                
             }
             else
             {
@@ -69,11 +64,12 @@ namespace EJERCICIO_2_2.View
             txtName.Text = "";
         }
 
-        private void SaveSignatureToDevice(Stream img)
+        private async void SaveSignatureToDevice(Stream img)
         {
             try
             {
-                var filename = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures).ToString(), "Signatures");
+                var filename = "/storage/emulated/0/Android/data/com.companyname.ejercicio_2_2/files/Signatures";
+                //var filename = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures).ToString(), "Signatures");
 
                 if (!Directory.Exists(filename))
                 {
@@ -86,10 +82,11 @@ namespace EJERCICIO_2_2.View
                 var mStream = (MemoryStream)img;
                 Byte[] bytes = mStream.ToArray();
                 File.WriteAllBytes(filename, bytes);
+                await DisplayAlert("Aviso", "Firma Guardado Correctamente "+ filename, "OK");
             }
             catch (Exception ex)
             {
-                DisplayAlert("Error", ex.Message, "Ok");
+                await DisplayAlert("Error", ex.Message, "Ok");
             }
 
         }
